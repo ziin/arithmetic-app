@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 type Operation = {
   numbers: [number, number]
@@ -12,16 +12,24 @@ const defaultOperation: Operation = {
 
 export const useOperations = () => {
   const [operation, setOperation] = useState(defaultOperation)
+  const [{ min, max }, setMinMax] = useState({ min: 1, max: 19 })
 
   const result =
     operation.operator === '+'
       ? operation.numbers[0] + operation.numbers[1]
       : operation.numbers[0] - operation.numbers[1]
 
+  useEffect(() => {
+    setOperation(getOperation(min, max))
+  }, [min, max])
+
   return {
     operation,
     result,
-    nextOperation: () => setOperation(getOperation()),
+    min,
+    max,
+    updateMinMax: setMinMax,
+    nextOperation: () => setOperation(getOperation(min, max)),
   }
 }
 
@@ -37,9 +45,9 @@ function getRandomOperator() {
   return randomBool() ? '-' : '+'
 }
 
-function getOperation(): Operation {
+function getOperation(min = 1, max = 19): Operation {
   return {
-    numbers: [getRandomNumber(), getRandomNumber()],
+    numbers: [getRandomNumber(min, max), getRandomNumber(min, max)],
     operator: getRandomOperator(),
   }
 }

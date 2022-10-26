@@ -8,7 +8,10 @@
 .App {
   display: flex;
   flex-direction: column;
-  max-width: 7ch;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 24px;
 }
 
 .App input[type='number'] {
@@ -19,6 +22,7 @@
   text-align: center;
   border-radius: 8px;
   appearance: none;
+  max-width: 10ch;
 }
 .App input::-webkit-outer-spin-button,
 .App input::-webkit-inner-spin-button {
@@ -34,6 +38,10 @@ input[type='number'] {
   line-height: 1.5em;
   font-weight: 700;
   text-align: center;
+}
+
+span.operator {
+  font-size: 4rem;
 }
 
 p.congrats {

@@ -1,28 +1,23 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
+html,
+#root {
+  @apply h-full;
 }
 
 body {
-  display: flex;
-  place-items: center;
-  min-height: 100vh;
-  background: #121212;
+  @apply h-full bg-gray-900 text-5xl font-bold text-gray-300;
+}
+
+input {
+  @apply appearance-none rounded-md border border-gray-500 bg-inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
 }
